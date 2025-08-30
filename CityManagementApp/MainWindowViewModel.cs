@@ -1,5 +1,4 @@
 ﻿using CityManagementApp.Auth;
-using Duende.IdentityModel.OidcClient;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Net.Http;
@@ -20,7 +19,6 @@ public class MainWindowViewModel
 
     public string Username { get; set; } = SessionStore.UserName;
 
-    public bool CanCreateTasks => SessionStore.Permissions.Contains("create:tasks");
     public bool CanCreateProjects => SessionStore.Permissions.Contains("create:projects");
     public bool CanAcceptTasks => SessionStore.Permissions.Contains("update:tasks");
     public bool CanAcceptProjects => SessionStore.Permissions.Contains("update:projects");
@@ -85,7 +83,7 @@ public class MainWindowViewModel
     {
         if (task == null) return;
         var result = await _client.PatchAsync($"/task/{task.Id}/accept", null);
-        if(result.IsSuccessStatusCode)
+        if (result.IsSuccessStatusCode)
             task.IsAccepted = true;
     }
 

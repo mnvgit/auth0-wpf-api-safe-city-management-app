@@ -43,7 +43,6 @@
                 <DockPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5">
                         <Button Content="Create Task" Command="{Binding CreateTaskCommand}" Margin="5"
-                                IsEnabled="{Binding CanCreateTasks}"
                                 Background="#3498DB" Foreground="White" FontWeight="Bold" Padding="5,2"
                                 Cursor="Hand"/>
                     </StackPanel>
