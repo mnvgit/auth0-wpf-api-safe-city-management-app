@@ -16,12 +16,14 @@ namespace CityManagementApi.Services
                 new CityBuildProject
                 {
                     Id = ProjectId++,
-                    Details = "Build supermarket"
+                    Details = "Build supermarket",
+                    Budget = 1000000
                 },
                 new CityBuildProject
                 {
                     Id = ProjectId++,
-                    Details = "Build bussines center"
+                    Details = "Build business center",
+                    Budget = 2000000   
                 },
             ];
         }

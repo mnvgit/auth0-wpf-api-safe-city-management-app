@@ -16,12 +16,14 @@ namespace CityManagementApi.Services
                 new CityTask
                 {
                     Id = UserId++,
-                    Details = "Plant trees"
+                    Task = "Plant trees",
+                    Department = CityDepartments.Garden
                 },
                 new CityTask
                 {
                     Id = UserId++,
-                    Details = "Paint crosswalk"
+                    Task = "Paint crosswalk",
+                    Department = CityDepartments.Streets
                 },
             ];
         }

@@ -1,0 +1,16 @@
+﻿<Window x:Class="CityManagementApp.CreateTaskWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Create Task" Height="180" Width="300" WindowStartupLocation="CenterOwner">
+    <StackPanel Margin="10">
+        <TextBlock Text="Task Details:"/>
+        <TextBox x:Name="DetailsTextBox" Margin="0,5"/>
+        <TextBlock Text="Department:"/>
+        <ComboBox x:Name="DepartmentComboBox" Margin="0,5" SelectedIndex="0">
+            <ComboBoxItem>Garden</ComboBoxItem>
+            <ComboBoxItem>Streets</ComboBoxItem>
+            <ComboBoxItem>Sanitation</ComboBoxItem>
+        </ComboBox>
+        <Button Content="OK" Width="80" Margin="0,10,0,0" HorizontalAlignment="Right" Click="OkButton_Click"/>
+    </StackPanel>
+</Window>

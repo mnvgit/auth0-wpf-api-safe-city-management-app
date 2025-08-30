@@ -56,7 +56,11 @@
                                         <StackPanel Orientation="Vertical">
                                             <TextBlock>
                                                 <Run FontWeight="Bold" Text="Task Details: " />
-                                                <Run Text="{Binding Details}" />
+                                                <Run Text="{Binding Task}" />
+                                            </TextBlock>
+                                            <TextBlock>
+                                                <Run FontWeight="Bold" Text="Department: " />
+                                                <Run Text="{Binding DepartmentName, Mode=OneWay}" />
                                             </TextBlock>
                                             <TextBlock>
                                                 <Run FontWeight="Bold" Text="Status: " />
@@ -92,8 +96,20 @@
                             <DataTemplate>
                                 <Border BorderBrush="#BDC3C7" BorderThickness="1" CornerRadius="5" Margin="2" Padding="5" Background="#ECF0F1">
                                     <DockPanel>
-                                        <TextBlock Text="{Binding Details}" DockPanel.Dock="Left"/>
-                                        <TextBlock Text="{Binding Status, Mode=OneWay}" Margin="10,0,0,0" DockPanel.Dock="Left"/>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock>
+                                                <Run FontWeight="Bold" Text="Project Details: " />
+                                                <Run Text="{Binding Details}" />
+                                            </TextBlock>
+                                            <TextBlock>
+                                                <Run FontWeight="Bold" Text="Budget: " />
+                                                <Run Text="{Binding Budget, Mode=OneWay}" />
+                                            </TextBlock>
+                                            <TextBlock>
+                                                <Run FontWeight="Bold" Text="Status: " />
+                                                <Run Text="{Binding Status, Mode=OneWay}" />
+                                            </TextBlock>
+                                        </StackPanel>
                                         <Button Content="Accept" DockPanel.Dock="Right" Margin="5,0,0,0"
                                                 Command="{Binding DataContext.AcceptProjectCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                                 CommandParameter="{Binding}"

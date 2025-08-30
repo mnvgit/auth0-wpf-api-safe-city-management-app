@@ -4,10 +4,12 @@ using System.Windows;
 
 namespace CityManagementApp
 {
-    public class CityTask : INotifyPropertyChanged
+    public class CityBuildProject : INotifyPropertyChanged
     {
         public int Id { get; set; }
-        public string Details { get; set; } = "";
+        public required string Details { get; set; }
+        public required decimal Budget { get; set; }
+
 
         private bool _isAccepted;
         public bool IsAccepted

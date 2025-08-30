@@ -4,10 +4,13 @@ using System.Windows;
 
 namespace CityManagementApp
 {
-    public class CityBuildProject : INotifyPropertyChanged
+    public class CityTask : INotifyPropertyChanged
     {
         public int Id { get; set; }
-        public string Details { get; set; } = "";
+        public string Task { get; set; } = "";
+
+        public CityDepartment Department { get; set; }
+
 
         private bool _isAccepted;
         public bool IsAccepted
@@ -25,6 +28,8 @@ namespace CityManagementApp
         public Visibility AcceptButtonVisibility => !IsAccepted && SessionStore.Permissions.Contains("update:tasks")
                                            ? Visibility.Visible
                                            : Visibility.Collapsed;
+
+        public string DepartmentName => Department.ToString();
 
         public string Status => IsAccepted ? "Accepted" : "Pending";
 

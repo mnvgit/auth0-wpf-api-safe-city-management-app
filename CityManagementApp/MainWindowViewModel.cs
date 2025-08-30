@@ -1,7 +1,7 @@
 ﻿using CityManagementApp.Auth;
+using Duende.IdentityModel.OidcClient;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -56,21 +56,26 @@ public class MainWindowViewModel
 
     private async Task CreateTaskAsync()
     {
-        var details = Microsoft.VisualBasic.Interaction.InputBox("Enter task details:", "Create Task", "");
-        if (string.IsNullOrWhiteSpace(details)) return;
+        var createWindow = new CreateTaskWindow();
+        if (createWindow.ShowDialog() != true) return;
 
-        var content = new StringContent(JsonConvert.SerializeObject(new CityTask { Details = details }),
-                                        Encoding.UTF8, "application/json");
+        var task = new CityTask
+        {
+            Task = createWindow.TaskDetails,
+            Department = createWindow.Department
+        };
+
+        var content = new StringContent(JsonConvert.SerializeObject(task), Encoding.UTF8, "application/json");
         await _client.PostAsync("/task", content);
         await LoadTasksDataAsync();
     }
 
     private async Task CreateProjectAsync()
     {
-        var details = Microsoft.VisualBasic.Interaction.InputBox("Enter project details:", "Create Project", "");
-        if (string.IsNullOrWhiteSpace(details)) return;
+        var createWindow = new CreateProjectWindow();
+        if (createWindow.ShowDialog() != true) return;
 
-        var content = new StringContent(JsonConvert.SerializeObject(new CityBuildProject { Details = details }),
+        var content = new StringContent(JsonConvert.SerializeObject(new CityBuildProject { Details = createWindow.ProjectDetails, Budget = createWindow.Budget }),
                                         Encoding.UTF8, "application/json");
         await _client.PostAsync("/project", content);
         await LoadProjectsDataAsync();
@@ -79,14 +84,16 @@ public class MainWindowViewModel
     private async Task AcceptTaskAsync(CityTask? task)
     {
         if (task == null) return;
-        await _client.PatchAsync($"/task/{task.Id}/accept", null);
-        task.IsAccepted = true;
+        var result = await _client.PatchAsync($"/task/{task.Id}/accept", null);
+        if(result.IsSuccessStatusCode)
+            task.IsAccepted = true;
     }
 
     private async Task AcceptProjectAsync(CityBuildProject? project)
     {
         if (project == null) return;
-        await _client.PatchAsync($"/project/{project.Id}/accept", null);
-        project.IsAccepted = true;
+        var result = await _client.PatchAsync($"/project/{project.Id}/accept", null);
+        if (result.IsSuccessStatusCode)
+            project.IsAccepted = true;
     }
 }
