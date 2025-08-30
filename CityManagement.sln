@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityManagementApi", "CityManagement\CityManagementApi.csproj", "{FDFCAE4A-893C-4C91-8689-F92AC13BEAA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityManagementApp", "CityManagementApp\CityManagementApp.csproj", "{7016CDFA-1417-49D9-A193-C555148A5852}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FDFCAE4A-893C-4C91-8689-F92AC13BEAA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDFCAE4A-893C-4C91-8689-F92AC13BEAA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDFCAE4A-893C-4C91-8689-F92AC13BEAA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7016CDFA-1417-49D9-A193-C555148A5852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7016CDFA-1417-49D9-A193-C555148A5852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7016CDFA-1417-49D9-A193-C555148A5852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7016CDFA-1417-49D9-A193-C555148A5852}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

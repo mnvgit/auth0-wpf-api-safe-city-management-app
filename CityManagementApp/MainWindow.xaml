@@ -1,0 +1,85 @@
+﻿<Window x:Class="CityManagementApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CityManagementApp"
+        Title="City Management" Height="500" Width="800">
+    <DockPanel>
+        <!-- Top bar -->
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="LightGray">
+            <TextBlock Text="City Management System" FontSize="18" Margin="10"/>
+            <TextBlock x:Name="UsernameText" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Tabs -->
+        <TabControl x:Name="MainTabControl">
+            <!-- Tasks Tab -->
+            <TabItem Header="Tasks">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5">
+                        <Button x:Name="CreateTaskButton" Content="Create Task" Margin="5"/>
+                    </StackPanel>
+                    <ListBox x:Name="TasksList" ItemsSource="{Binding Tasks}">
+                        <ListBox.ItemTemplate >
+                            <DataTemplate DataType="{x:Type local:CityTask}">
+                                <DockPanel Margin="5" >
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock VerticalAlignment="Center" DockPanel.Dock="Left">
+                                            <Run FontWeight="Bold" Text="Task Deetails: " />
+                                            <Run Text="{Binding Details}" />
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run FontWeight="Bold" Text="Status: " />
+                                            <Run Text="{Binding Status, Mode=OneWay}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <Button x:Name="myBtn" Content="Accept" DockPanel.Dock="Right" 
+                                            Margin="5,0,0,0"
+                                            VerticalAlignment="Center"
+                                            Click="AcceptTaskButton_Click">
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding DataContext.CanAcceptTasks, RelativeSource={RelativeSource AncestorType=Window}}" Value="True"/>
+                                                            <Condition Binding="{Binding IsAccepted}" Value="False"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </MultiDataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+            </TabItem>
+
+            <!-- Projects Tab -->
+            <TabItem Header="Projects">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5">
+                        <Button x:Name="CreateProjectButton" Content="Create Project" Margin="5"/>
+                    </StackPanel>
+                    <ListBox x:Name="ProjectsList" ItemsSource="{Binding Projects}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="{x:Type local:CityBuildProject}">
+                                <DockPanel Margin="2">
+                                    <TextBlock Text="{Binding Details}" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+                                    <Button Content="Accept" DockPanel.Dock="Right" 
+                                            Margin="5,0,0,0"
+                                            VerticalAlignment="Center"
+                                            IsEnabled="{Binding DataContext.CanAcceptProjects, RelativeSource={RelativeSource AncestorType=Window}}"
+                                            Click="AcceptProjectButton_Click"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
