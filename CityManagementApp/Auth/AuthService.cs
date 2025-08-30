@@ -1,5 +1,6 @@
 ﻿using Auth0.OidcClient;
 using Duende.IdentityModel.OidcClient;
+using Duende.IdentityModel.OidcClient.Browser;
 using System.Windows;
 
 namespace CityManagementApp.Auth
@@ -32,6 +33,19 @@ namespace CityManagementApp.Auth
             {
                 MessageBox.Show($"Login failed: {ex.Message}");
                 return null!;
+            }
+        }
+
+        public async Task<BrowserResultType> LogoutAsync()
+        {
+            try
+            {
+                return await client.LogoutAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Logout failed: {ex.Message}");
+                return BrowserResultType.UnknownError;
             }
         }
     }
