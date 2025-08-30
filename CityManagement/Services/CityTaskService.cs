@@ -1,15 +1,14 @@
-﻿using CityManagementApi.Data;
-using CityManagementApi.Models.Entities;
+﻿using CityManagementApi.Models;
 
-namespace CityManagementApi.Data
+namespace CityManagementApi.Services
 {
-    public class CityTaskRepository : ICityTaskRepository
+    public class CityTaskService : ICityTaskService
     {
         private readonly List<CityTask> _cityTasks;
 
         private int UserId = 1;
 
-        public CityTaskRepository()
+        public CityTaskService()
         {
             _cityTasks =
             [
@@ -30,11 +29,6 @@ namespace CityManagementApi.Data
         public Task<IEnumerable<CityTask>> GetAllTasksAsync()
         {
             return Task.FromResult<IEnumerable<CityTask>>(_cityTasks);
-        }
-
-        public Task<IEnumerable<CityTask>> GetAcceptedTasksAsync()
-        {
-            return Task.FromResult(_cityTasks.Where(t => t.IsAccepted));
         }
 
         public Task<CityTask> CreateTaskAsync(CityTask task)

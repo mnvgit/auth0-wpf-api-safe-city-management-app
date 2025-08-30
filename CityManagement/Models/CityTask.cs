@@ -1,4 +1,4 @@
-﻿namespace CityManagementApi.Models.Entities
+﻿namespace CityManagementApi.Models
 {
     public class CityTask
     {

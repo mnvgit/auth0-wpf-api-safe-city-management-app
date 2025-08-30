@@ -1,5 +1,5 @@
 ﻿using CityManagementApi.Auth;
-using CityManagementApi.Data;
+using CityManagementApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
@@ -11,8 +11,8 @@ namespace CityManagementApi
     {
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            services.AddSingleton<ICityBuildProjectRepository, CityBuildProjectRepository>();
-            services.AddSingleton<ICityTaskRepository, CityTaskRepository>();
+            services.AddSingleton<ICityBuildProjectService, CityBuildProjectService>();
+            services.AddSingleton<ICityTaskService, CityTaskService>();
             return services;
         }
 

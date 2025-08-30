@@ -1,14 +1,14 @@
-﻿using CityManagementApi.Models.Entities;
+﻿using CityManagementApi.Models;
 
-namespace CityManagementApi.Data
+namespace CityManagementApi.Services
 {
-    public class CityBuildProjectRepository : ICityBuildProjectRepository
+    public class CityBuildProjectService : ICityBuildProjectService
     {
         private readonly List<CityBuildProject> _cityBuildProjects;
 
         private int ProjectId = 1;
 
-        public CityBuildProjectRepository()
+        public CityBuildProjectService()
         {
             _cityBuildProjects =
             [
@@ -31,15 +31,10 @@ namespace CityManagementApi.Data
             return Task.FromResult<IEnumerable<CityBuildProject>>(_cityBuildProjects);
         }
 
-        public Task<IEnumerable<CityBuildProject>> GetAcceptedProjectsAsync()
-        {
-            return Task.FromResult(_cityBuildProjects.Where(p => p.IsAccepted));
-        }
-
         public Task<CityBuildProject> CreateProjectsAsync(CityBuildProject project)
         {
             project.Id = ProjectId++;
-            _cityBuildProjects.ToList().Add(project);
+            _cityBuildProjects.Add(project);
             return Task.FromResult(project);
         }
 

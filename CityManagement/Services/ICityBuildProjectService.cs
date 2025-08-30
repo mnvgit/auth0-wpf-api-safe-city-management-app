@@ -1,11 +1,10 @@
-﻿using CityManagementApi.Models.Entities;
+﻿using CityManagementApi.Models;
 
-namespace CityManagementApi.Data
+namespace CityManagementApi.Services
 {
-    public interface ICityBuildProjectRepository
+    public interface ICityBuildProjectService
     {
         Task<IEnumerable<CityBuildProject>> GetAllProjectsAsync();
-        Task<IEnumerable<CityBuildProject>> GetAcceptedProjectsAsync();
         Task<CityBuildProject> CreateProjectsAsync(CityBuildProject task);
         Task<bool> AcceptProjectsAsync(int projectId);
 
