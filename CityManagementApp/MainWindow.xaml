@@ -39,7 +39,7 @@
         <TabControl FontSize="14" Margin="10" Background="White" BorderBrush="#BDC3C7" BorderThickness="1" 
                     DockPanel.Dock="Top" >
             <!-- Tasks Tab -->
-            <TabItem Header="Tasks">
+            <TabItem Header="City Tasks">
                 <DockPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5">
                         <Button Content="Create Task" Command="{Binding CreateTaskCommand}" Margin="5"
@@ -81,7 +81,7 @@
             </TabItem>
 
             <!-- Projects Tab -->
-            <TabItem Header="Projects">
+            <TabItem Header="Building Projects">
                 <DockPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5">
                         <Button Content="Create Project" Command="{Binding CreateProjectCommand}" Margin="5"
