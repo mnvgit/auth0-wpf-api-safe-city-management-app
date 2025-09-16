@@ -1,0 +1,9 @@
+<button mat-raised-button color="primary" (click)="createProject()">Create Project</button>
+<ul>
+  <li *ngFor="let project of projects" style="margin:10px; border:1px solid #ccc; padding:10px; border-radius:4px;">
+    <div><strong>Details:</strong> {{ project.details }}</div>
+    <div><strong>Budget:</strong> {{ project.budget }}</div>
+    <div><strong>Status:</strong> {{ project.status }}</div>
+    <button *ngIf="!project.isAccepted" mat-raised-button color="accent" (click)="acceptProject(project)">Accept</button>
+  </li>
+</ul>

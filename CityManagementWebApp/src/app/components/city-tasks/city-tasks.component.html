@@ -1,0 +1,9 @@
+<button mat-raised-button color="primary" (click)="createTask()">Create Task</button>
+<ul>
+  <li *ngFor="let task of tasks" style="margin:10px; border:1px solid #ccc; padding:10px; border-radius:4px;">
+    <div><strong>Task:</strong> {{ task.task }}</div>
+    <div><strong>Department:</strong> {{ task.departmentName }}</div>
+    <div><strong>Status:</strong> {{ task.status }}</div>
+    <button *ngIf="!task.isAccepted" mat-raised-button color="accent" (click)="acceptTask(task)">Accept</button>
+  </li>
+</ul>
